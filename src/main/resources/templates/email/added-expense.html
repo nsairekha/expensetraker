@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Expense Notification</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .email-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5271ff;
+        }
+        h2 {
+            color: #4a4a4a;
+            font-size: 22px;
+            margin-top: 0;
+        }
+        .expense-details {
+            background-color: #f0f7ff;
+            border-left: 4px solid #5271ff;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .expense-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .expense-table th {
+            background-color: #f5f5f5;
+            text-align: left;
+            padding: 10px;
+        }
+        .expense-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e53935;
+        }
+        .person-name {
+            color: #5271ff;
+            font-weight: bold;
+        }
+        .group-name {
+            color: #673ab7;
+            font-weight: bold;
+        }
+        .action-button {
+            display: inline-block;
+            background-color: #5271ff;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .action-button:hover {
+            background-color: #3a5cf5;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+            font-size: 14px;
+            color: #777;
+        }
+        .your-share {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <div class="logo">Expense Manager</div>
+        </div>
+        
+        <h2>Hello <span th:text="${userName ?: 'there'}">there</span>!</h2>
+        
+        <p>A new expense has been added to your group.</p>
+        
+        <div class="expense-details">
+            <p><span class="person-name" th:text="${payerName ?: 'Someone'}">Someone</span> added an expense of <span class="amount">$<span th:text="${expenseAmount ?: 0}">0</span></span> in the group <span class="group-name" th:text="${groupName ?: 'your group'}">your group</span>.</p>
+        </div>
+        
+        <table class="expense-table">
+            <tr>
+                <th>Description</th>
+                <td th:text="${expenseDescription ?: 'No description'}">No description</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td th:text="${expenseDate ?: ''}">Date</td>
+            </tr>
+            <tr>
+                <th>Total Amount</th>
+                <td>$<span th:text="${expenseAmount ?: 0}">0</span></td>
+            </tr>
+            <tr>
+                <th>Added By</th>
+                <td th:text="${payerName ?: 'Unknown'}">Unknown</td>
+            </tr>
+        </table>
+        
+        <div class="your-share">
+            Your share of this expense: $<span th:text="${share ?: 0}">0</span>
+        </div>
+        
+        <a href="#" class="action-button">View Details in App</a>
+        
+        <div class="footer">
+            <p>Thanks,<br/>Expense Manager Team</p>
+            <p>Questions? Email us at support@expensemanager.com</p>
+        </div>
+    </div>
+</body>
+</html>
