@@ -16,7 +16,7 @@ import com.expensemanager.expense_backend.service.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8080"})
 public class AuthController {
 
     @Autowired
